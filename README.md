@@ -90,3 +90,21 @@ npm run dev
 - `GET /api/v1/factcheck/examples` — Retrieve curated sample claims (True, Misleading, False, Unverified) for testing.
 - `GET /api/v1/factcheck/history` — List past verified claims and audit logs.
 - `GET /api/v1/factcheck/stats` — Global verification metrics and accuracy index.
+
+---
+
+## 📄 License & Terms of Use (Lisensi & Aturan Penggunaan)
+
+This project is licensed under the **VeriFact AI Attribution-NonCommercial License** — see the [LICENSE](LICENSE) file for details.
+
+### ✅ You are FREE to:
+- **Use & Study**: Deploy, run, and explore the application for personal, academic, journalism, or research purposes.
+- **Modify & Improve**: Fork the repository, add new features, or experiment with custom NLP & RAG pipelines.
+- **Share & Distribute**: Share copies or forks publicly **provided that proper credit/attribution is given to the original repository and author ([Arterouss](https://github.com/Arterouss))**.
+
+### 🚫 STRICTLY PROHIBITED:
+- **No Commercial Sale or Resale**: You **cannot** sell, repackage, sublicense, or monetize this software (or derivatives) as a paid SaaS product, enterprise tool, or commercial package.
+- **No Attribution Removal**: Removing original copyright notices or author attribution is strictly forbidden.
+
+> Built with ❤️ by **[Arterouss](https://github.com/Arterouss)** for open, transparent, and non-commercial truth verification.
+
