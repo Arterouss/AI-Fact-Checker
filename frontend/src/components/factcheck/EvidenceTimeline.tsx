@@ -16,7 +16,7 @@ export default function EvidenceTimeline({ timeline }: EvidenceTimelineProps) {
       <div className="flex items-center gap-2">
         <GitCommit className="h-5 w-5 text-blue-600 dark:text-blue-400" />
         <h3 className="text-base font-bold text-slate-900 dark:text-white">
-          Evidence Timeline & Reporting History
+          Timeline Kronologi Bukti & Investigasi (Evidence Timeline)
         </h3>
       </div>
 

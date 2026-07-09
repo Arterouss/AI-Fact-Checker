@@ -28,6 +28,8 @@ class TrustedSource(BaseModel):
     summary: str = Field(..., description="Short summary of what the trusted reference states")
     credibility_score: int = Field(..., ge=0, le=100, description="Credibility index of this source out of 100")
     source_type: str = Field("News Agency", description="Category: Official Body, Academic Paper, News Agency, or Government")
+    stance: str = Field("refuting", description="refuting (Membantah), supporting (Mendukung), or neutral")
+    language: str = Field("ID", description="Source language ID or EN")
 
 
 class ClaimSubVerdict(BaseModel):
@@ -73,6 +75,8 @@ class FactCheckResponse(BaseModel):
     verdict_label: str = Field(..., description="Human readable label (e.g. 'Likely True')")
     confidence_score: int = Field(..., ge=0, le=100, description="Confidence percentage")
     summary: str = Field(..., description="AI Executive Summary of the fact-check")
+    eli15_explanation: str = Field("", description="Explain Like I'm 15 simplified explanation for laypeople")
+    cross_language_summary: str = Field("", description="Cross-language comparison notes between Indonesian and international sources")
     reasoning_steps: List[str] = Field(..., description="Step-by-step reasoning behind the conclusion")
     suspicious_highlights: List[SuspiciousHighlight] = Field(default_factory=list)
     claim_breakdown: List[ClaimSubVerdict] = Field(default_factory=list)

@@ -118,6 +118,38 @@ Sources: ${result.trusted_sources.map(s => s.domain).join(', ')}`;
             <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
               {result.summary}
             </p>
+
+            {/* ELI15 Box */}
+            {result.eli15_explanation && (
+              <div className="mt-4 rounded-2xl border border-amber-200/80 bg-amber-50/70 p-4 dark:border-amber-900/50 dark:bg-amber-950/30">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="inline-flex items-center rounded-lg bg-amber-500 px-2 py-0.5 text-[11px] font-bold text-white uppercase tracking-wider">
+                    Explain Like I'm 15
+                  </span>
+                  <span className="text-xs font-bold text-amber-900 dark:text-amber-300">
+                    Penjelasan Ringkas & Mudah Paham
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-amber-950 dark:text-amber-200 leading-relaxed font-medium">
+                  {result.eli15_explanation}
+                </p>
+              </div>
+            )}
+
+            {/* Cross-Language Fact Check Box */}
+            {result.cross_language_summary && (
+              <div className="mt-3 rounded-2xl border border-indigo-200/80 bg-indigo-50/60 p-3.5 dark:border-indigo-900/50 dark:bg-indigo-950/30 flex items-start gap-2.5">
+                <span className="text-base">🌐</span>
+                <div>
+                  <span className="block text-[11px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400">
+                    Cross-Language Verification (ID ↔ EN)
+                  </span>
+                  <p className="text-xs text-indigo-950 dark:text-indigo-200 leading-relaxed mt-0.5">
+                    {result.cross_language_summary}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Gauge */}

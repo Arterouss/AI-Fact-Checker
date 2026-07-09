@@ -9,6 +9,8 @@ export interface TrustedSource {
   summary: string;
   credibility_score: number;
   source_type: string;
+  stance?: 'refuting' | 'supporting' | 'neutral' | string;
+  language?: string;
 }
 
 export interface ClaimSubVerdict {
@@ -54,6 +56,8 @@ export interface FactCheckResponse {
   verdict_label: string;
   confidence_score: number;
   summary: string;
+  eli15_explanation?: string;
+  cross_language_summary?: string;
   reasoning_steps: string[];
   suspicious_highlights: SuspiciousHighlight[];
   claim_breakdown: ClaimSubVerdict[];

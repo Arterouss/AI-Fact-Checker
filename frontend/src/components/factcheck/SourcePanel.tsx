@@ -32,14 +32,28 @@ export default function SourcePanel({ sources }: SourcePanelProps) {
             className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all hover:border-blue-500/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
           >
             <div className="space-y-2.5">
-              <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
-                  <Globe className="h-3 w-3" />
-                  {source.domain}
-                </span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 ring-1 ring-emerald-500/20 dark:bg-emerald-950/50 dark:text-emerald-300">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">
+                    <Globe className="h-3 w-3" />
+                    {source.domain}
+                  </span>
+
+                  {/* Evidence Mapping Stance Badge */}
+                  {source.stance === 'supporting' ? (
+                    <span className="inline-flex items-center rounded-lg bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 text-[10px] font-bold text-emerald-800 dark:text-emerald-300">
+                      🟢 MENDUKUNG KLAIM
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center rounded-lg bg-rose-100 dark:bg-rose-950/80 px-2 py-0.5 text-[10px] font-bold text-rose-800 dark:text-rose-300">
+                      🔴 MEMBANTAH KLAIM
+                    </span>
+                  )}
+                </div>
+
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 ring-1 ring-emerald-500/20 dark:bg-emerald-950/50 dark:text-emerald-300" title="Source Credibility Score out of 100">
                   <CheckCircle2 className="h-3 w-3" />
-                  {source.credibility_score}% Credibility
+                  {source.credibility_score}/100 Kredibilitas
                 </span>
               </div>
 
