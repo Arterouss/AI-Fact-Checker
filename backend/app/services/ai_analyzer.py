@@ -95,7 +95,34 @@ class VeriFactAIEngine:
             )
         ]
 
+        is_id = any(w in text.lower().split() for w in ["yang", "dan", "di", "ini", "berita", "pemerintah", "presiden", "vaksin", "kesehatan", "studi", "menurut", "kopi", "hoaks", "hoax", "fakta", "cek"])
+        detected_lang = "Indonesian" if is_id else "English"
+
         sources = [
+            TrustedSource(
+                title="Kompas Cek Fakta — Kanal Verifikasi Berita Nasional",
+                domain="kompas.com",
+                url="https://www.kompas.com/cekfakta",
+                summary="Verifikasi fakta independen terverifikasi IFCN (International Fact-Checking Network) oleh Kompas Media Nusantara.",
+                credibility_score=98,
+                source_type="News Agency"
+            ),
+            TrustedSource(
+                title="Tempo CekFakta & Investigasi Independen",
+                domain="tempo.co",
+                url="https://cekfakta.tempo.co",
+                summary="Pemeriksaan fakta independen dan penelusuran forensik digital oleh tim redaksi Tempo.",
+                credibility_score=97,
+                source_type="News Agency"
+            ),
+            TrustedSource(
+                title="TurnBackHoax.id — Masyarakat Anti Fitnah Indonesia (MAFINDO)",
+                domain="turnbackhoax.id",
+                url="https://turnbackhoax.id",
+                summary="Arsip nasional bantahan misinformasi dan verifikasi hoaks berbasis penelusuran fakta kolaboratif.",
+                credibility_score=96,
+                source_type="Official Body"
+            ),
             TrustedSource(
                 title="Reuters Fact Check & Global Journalism Standard",
                 domain="reuters.com",
@@ -103,14 +130,6 @@ class VeriFactAIEngine:
                 summary="Global news organization maintaining strict multi-source verification and objective reporting guidelines.",
                 credibility_score=98,
                 source_type="News Agency"
-            ),
-            TrustedSource(
-                title="FactCheck.org Non-Partisan Archive",
-                domain="factcheck.org",
-                url="https://www.factcheck.org",
-                summary="Non-profit project monitoring factual accuracy in public statements and viral online claims.",
-                credibility_score=94,
-                source_type="Official Body"
             )
         ]
 
@@ -118,7 +137,7 @@ class VeriFactAIEngine:
             EvidenceTimelineItem(
                 date=datetime.utcnow().strftime("%Y-%m-%d"),
                 title="Forensic NLP Verification Completed",
-                description="VeriFact AI scanned cross-platform databases and verified claim assertions."
+                description="VeriFact AI scanned cross-platform databases and verified claim assertions against credible journalistic repositories."
             )
         ]
 
@@ -127,9 +146,9 @@ class VeriFactAIEngine:
             emotional_language_score=emotional_score,
             emotional_tone=emotional_tone,
             political_bias="Center / Objective",
-            source_credibility_index=85 if verdict in [FactVerdict.TRUE, FactVerdict.LIKELY_TRUE] else 42,
+            source_credibility_index=96 if verdict in [FactVerdict.TRUE, FactVerdict.LIKELY_TRUE] else 42,
             reading_time_seconds=reading_time,
-            detected_language="English"
+            detected_language=detected_lang
         )
 
         return FactCheckResponse(

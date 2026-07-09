@@ -36,6 +36,13 @@ const FALLBACK_EXAMPLES: SampleClaimItem[] = [
     text: 'According to new reports, large AI data centers consume 10 times more electricity than utility providers originally projected.',
     platform: 'claim',
     expected_verdict: 'LIKELY_TRUE'
+  },
+  {
+    id: 'sample-5',
+    title: 'Cek Fakta Media Nasional (Kompas & Tempo)',
+    text: 'Beredar klaim di media sosial bahwa minum air garam hangat dapat membunuh virus di tenggorokan. Penelusuran Kompas Cek Fakta dan MAFINDO memastikan informasi tersebut tidak terbukti secara medis.',
+    platform: 'news',
+    expected_verdict: 'TRUE'
   }
 ];
 
