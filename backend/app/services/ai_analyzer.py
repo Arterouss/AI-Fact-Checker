@@ -470,14 +470,26 @@ class VeriFactAIEngine:
                     link_text = link_elem.text if link_elem is not None else "https://www.kompas.com"
                     source_text = source_elem.text if source_elem is not None else "Media Nasional"
                     
-                    domain = "kompas.com" if "kompas" in source_text.lower() else ("tempo.co" if "tempo" in source_text.lower() else ("detik.com" if "detik" in source_text.lower() else "news.google.com"))
+                    source_clean = source_text.strip()
+                    domain = source_clean.lower().replace(" ", "").replace("indonesia", ".com")
+                    if "." not in domain:
+                        domain = f"{domain}.com"
+                    try:
+                        parsed_netloc = urllib.parse.urlparse(link_text).netloc
+                        if parsed_netloc and "google" not in parsed_netloc:
+                            domain = parsed_netloc.replace("www.", "")
+                    except Exception:
+                        pass
+
                     trusted_sources.append(TrustedSource(
                         title=title_text,
                         domain=domain,
                         url=link_text,
-                        summary=f"Artikel investigasi live dari {source_text}: {title_text}",
+                        summary=f"Artikel verifikasi live dari {source_clean}: {title_text}",
                         credibility_score=97,
-                        source_type="News Agency"
+                        source_type="News Agency",
+                        stance="refuting" if any(hw in title_text.lower() for hw in ["hoax", "hoaks", "salah", "keliru"]) else "supporting",
+                        language="ID"
                     ))
 
                 if trusted_sources:
