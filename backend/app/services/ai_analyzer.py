@@ -234,8 +234,13 @@ class VeriFactAIEngine:
         if any(kw in text_lower for kw in seamless_keywords):
             return self._analyze_seamless_hoax_screenshot(text)
 
-        # 3. Check authentic news media screenshot verification
-        if has_image and (text == "Klaim dari tangkapan layar (screenshot) berita yang diunggah" or any(kw in text_lower for kw in ["tempo", "kompas", "detik", "asli", "authentic"])):
+        # 3. Check authentic news media screenshot verification (or default screenshot upload without specific claim text)
+        placeholder_texts = [
+            "tangkapan layar berita (screenshot upload)",
+            "screenshot hoaks / berita palsu yang diunggah",
+            "klaim dari tangkapan layar (screenshot) berita yang diunggah"
+        ]
+        if has_image and (text_lower in placeholder_texts or any(kw in text_lower for kw in ["tempo", "kompas", "detik", "asli", "authentic"])):
             return self._analyze_authentic_image_upload(text)
 
         return None

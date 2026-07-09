@@ -52,7 +52,7 @@ export default function ClaimInput({
     e.preventDefault();
     if (!text.trim() && !imageData) return;
     onAnalyze({
-      text: text.trim() || 'Screenshot Hoaks / Berita Palsu yang Diunggah',
+      text: text.trim() || 'Tangkapan Layar Berita (Screenshot Upload)',
       image_data: imageData || undefined,
       platform,
       include_deep_nlp: true
