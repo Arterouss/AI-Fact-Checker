@@ -60,7 +60,8 @@ class NLPDiagnostics(BaseModel):
 
 
 class FactCheckRequest(BaseModel):
-    text: str = Field(..., min_length=10, description="Content or claim text to analyze")
+    text: str = Field("", description="Content or claim text to analyze")
+    image_data: Optional[str] = Field(None, description="Optional base64 image data or screenshot for OCR analysis")
     platform: PlatformType = Field(PlatformType.ALL, description="Platform source type")
     include_deep_nlp: bool = Field(True, description="Whether to compute bonus NLP diagnostics")
 

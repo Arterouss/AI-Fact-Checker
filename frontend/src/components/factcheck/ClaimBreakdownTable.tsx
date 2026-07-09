@@ -17,7 +17,9 @@ export default function ClaimBreakdownTable({ breakdown }: ClaimBreakdownTablePr
       <div className="flex items-center gap-2">
         <Layers className="h-5 w-5 text-blue-600 dark:text-blue-400" />
         <h3 className="text-base font-bold text-slate-900 dark:text-white">
-          Individual Claim Deconstruction ({breakdown.length})
+          {breakdown.length === 1
+            ? 'Bedah Klaim Inti (Core Claim Analysis)'
+            : `Bedah Poin-Poin Klaim (${breakdown.length} Pernyataan)`}
         </h3>
       </div>
 
@@ -26,10 +28,10 @@ export default function ClaimBreakdownTable({ breakdown }: ClaimBreakdownTablePr
           <table className="w-full text-left text-xs">
             <thead className="border-b border-slate-200/80 bg-slate-50/80 text-slate-500 dark:border-slate-800 dark:bg-slate-950/80">
               <tr>
-                <th className="px-5 py-3.5 font-semibold">Extracted Assertion</th>
-                <th className="px-5 py-3.5 font-semibold">Sub-Verdict</th>
-                <th className="px-5 py-3.5 font-semibold">Confidence</th>
-                <th className="px-5 py-3.5 font-semibold">Forensic Note</th>
+                <th className="px-5 py-3.5 font-semibold">Pernyataan / Klaim yang Diuji</th>
+                <th className="px-5 py-3.5 font-semibold">Status Verifikasi</th>
+                <th className="px-5 py-3.5 font-semibold">Akurasi</th>
+                <th className="px-5 py-3.5 font-semibold">Catatan Investigasi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/80">

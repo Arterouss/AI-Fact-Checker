@@ -42,6 +42,7 @@ export interface NLPDiagnostics {
 
 export interface FactCheckRequest {
   text: string;
+  image_data?: string;
   platform: PlatformType;
   include_deep_nlp?: boolean;
 }
